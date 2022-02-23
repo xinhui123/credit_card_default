@@ -26,8 +26,8 @@ def index():
         pred1 = predict_result(income, age, loan, model1, False, 'Logistic Regression')
         pred2 = predict_result(income, age, loan, model2, False, 'Classification Tree')
         pred3 = predict_result(income, age, loan, model3, False, 'random_forest')
-        pred4 = predict_result(income, age, loan, model4, True, 'MLP')
-        pred5 = predict_result(income, age, loan, model5, True, 'xgboost')
+        pred4 = predict_result(income, age, loan, model4, False, 'MLP')
+        pred5 = predict_result(income, age, loan, model5, False, 'xgboost')
 
         final_result = pred1 + pred2 + pred3 + pred4 + pred5
         
@@ -37,22 +37,22 @@ def index():
 
 def predict_result(income, age, loan, model, should_normalise, model_name):
     if should_normalise == True:
-        data = pd.read_csv('Credit Card Default II (balance).csv')
-        data = data[['income', 'age', 'loan']]
+#         data = pd.read_csv('Credit Card Default II (balance).csv')
+#         data = data[['income', 'age', 'loan']]
         
-        new_data = pd.DataFrame({"income":[income],
-                            "age":[age],
-                            'loan':[loan]})
-        data = data.append(new_data)
+#         new_data = pd.DataFrame({"income":[income],
+#                             "age":[age],
+#                             'loan':[loan]})
+#         data = data.append(new_data)
 
-        data_normalized = data.copy()
+#         data_normalized = data.copy()
 
-        for i in data_normalized.columns:
-            data_normalized[i]=stats.zscore(data_normalized[i].astype(np.float))
+#         for i in data_normalized.columns:
+#             data_normalized[i]=stats.zscore(data_normalized[i].astype(np.float))
         
-        X = [[float(data_normalized['income'].iloc[-1]), 
-              float(data_normalized['age'].iloc[-1]), 
-              float(data_normalized['loan'].iloc[-1])]]
+#         X = [[float(data_normalized['income'].iloc[-1]), 
+#               float(data_normalized['age'].iloc[-1]), 
+#               float(data_normalized['loan'].iloc[-1])]]
     else:
         X = [[float(income), float(age), float(loan)]]
     
