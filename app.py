@@ -2,7 +2,7 @@ from flask import Flask
 from flask import request, render_template
 import pandas as pd
 
-from scipy import stats
+# from scipy import stats
 import numpy as np
 
 
@@ -53,6 +53,7 @@ def predict_result(income, age, loan, model, should_normalise, model_name):
 #         X = [[float(data_normalized['income'].iloc[-1]), 
 #               float(data_normalized['age'].iloc[-1]), 
 #               float(data_normalized['loan'].iloc[-1])]]
+        X = [[float(income), float(age), float(loan)]]
     else:
         X = [[float(income), float(age), float(loan)]]
     
