@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request, render_template
-# import pandas as pd
+import pandas as pd
 
 # from scipy import stats
 import numpy as np
