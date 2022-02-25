@@ -21,11 +21,13 @@ def index():
         dfnew = dfnew[['income', 'age', 'loan']]
         df2 = {'income': income, 'age': age, 'loan': loan}
         dfnew = dfnew.append(df2, ignore_index=True)
-        model1 = joblib.load("LogisticRegression")
-        model2 = joblib.load("DecisionTree")
-        model3 = joblib.load("RandomForest")
-        model4 = joblib.load("XGBoost")
+        
+        model1 = joblib.load("logistic")
+        model2 = joblib.load("classification_tree")
+        model3 = joblib.load("random_forest")
+        model4 = joblib.load("xgboost")
         model5 = joblib.load("MLP")
+        
         normalised_df = dfnew.copy()
         for i in x_column:
             normalised_df[i] = stats.zscore(normalised_df[i].astype(np.float))
